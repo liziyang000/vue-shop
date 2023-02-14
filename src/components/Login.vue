@@ -67,7 +67,7 @@ export default {
           return
         }
         const { data: res } = await this.$http.post('login', this.Loginform)
-        console.log(res)
+        // console.log(res)
         if (res.meta.status !== 200) {
           return this.$message.error('登陆失败！')
         }
@@ -79,6 +79,9 @@ export default {
       })
       this.resetForm()
     }
+  },
+  created() {
+    if (window.sessionStorage.getItem('token')) return this.$router.push('/home')
   }
 }
 </script>
