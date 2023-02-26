@@ -20,3 +20,9 @@ body,
 .el-table__expanded-cell[class*='cell'] {
   padding: 20px 50px;
 }
+.el-cascader-panel {
+  height: 300px;
+}
+.el-scrollbar__wrap {
+  overflow-x: hidden;
+}
