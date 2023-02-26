@@ -1,11 +1,18 @@
+import Add from '@/components/goods/Add.vue'
+import Categories from '@/components/goods/Categories.vue'
+import Lists from '@/components/goods/Lists.vue'
+import Params from '@/components/goods/Params.vue'
 import Home from '@/components/Home.vue'
 import Login from '@/components/Login.vue'
+import Orders from '@/components/order/Orders.vue'
+import Rights from '@/components/power/Rights.vue'
+import Roles from '@/components/power/Roles.vue'
+import Reports from '@/components/report/Reports.vue'
 import Users from '@/components/user/Users.vue'
 import Welcome from '@/components/Welcome.vue'
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 Vue.use(VueRouter)
-
 const routes = [
   {
     path: '/',
@@ -21,7 +28,15 @@ const routes = [
     redirect: '/welcome',
     children: [
       { path: '/welcome', component: Welcome },
-      { path: '/users', component: Users }
+      { path: '/users', component: Users },
+      { path: '/rights', component: Rights },
+      { path: '/roles', component: Roles },
+      { path: '/goods', component: Lists },
+      { path: '/goods/add', component: Add },
+      { path: '/params', component: Params },
+      { path: '/categories', component: Categories },
+      { path: '/orders', component: Orders },
+      { path: '/reports', component: Reports }
     ]
   }
 ]
