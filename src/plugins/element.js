@@ -1,4 +1,5 @@
 import {
+  Alert,
   Aside,
   Breadcrumb,
   BreadcrumbItem,
@@ -27,7 +28,11 @@ import {
   Switch,
   Table,
   TableColumn,
+  TabPane,
+  Tabs,
   Tag,
+  Timeline,
+  TimelineItem,
   Tooltip,
   Tree
 } from 'element-ui'
@@ -62,6 +67,11 @@ Vue.use(Dialog)
 Vue.use(Tag)
 Vue.use(Tree)
 Vue.use(Cascader)
+Vue.use(Alert)
+Vue.use(Tabs)
+Vue.use(TabPane)
 
+Vue.use(Timeline)
+Vue.use(TimelineItem)
 Vue.prototype.$message = Message
 Vue.prototype.$confirm = MessageBox.confirm

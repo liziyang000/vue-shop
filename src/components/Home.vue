@@ -2,7 +2,10 @@
   <el-container class="home-container">
     <!-- 头部区域 -->
     <el-header>
-      <div><img src="@/assets/logo.png" alt="" /><span>电商后台管理系统</span></div>
+      <div>
+        <img src="@/assets/logo.png" alt="" />
+        <span>电商后台管理系统</span>
+      </div>
       <el-button type="info" @click="logOut">退出登录</el-button>
     </el-header>
     <!-- 页面主体部分 -->
@@ -86,10 +89,13 @@ export default {
   height: 100%;
 }
 .el-header {
+  position: sticky;
+  top: 0;
+  z-index: 10;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: #373d41;
+  background-color: #333744;
   color: #fff;
   font-size: 20px;
   > div {
@@ -115,7 +121,6 @@ export default {
   /deep/.el-switch__core {
     width: 100% !important;
   }
-
   .el-menu {
     border-right: 0;
     i {
@@ -125,6 +130,7 @@ export default {
 }
 .el-main {
   background-color: #eaedf1;
+  height: calc(100vh - 60px);
 }
 .el-menu-vertical-demo:not(.el-menu--collapse) {
   width: 200px;
