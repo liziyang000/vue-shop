@@ -193,7 +193,6 @@ export default {
       const { data: res } = await this.$http.get('rights/tree')
       if (res.meta.status !== 200) return this.$message.error('获取用户权限列表失败！')
       this.rightList = res.data
-      // console.log(res.data)
       this.getLeafKeys(role, this.defKeys)
       this.setRightDialogVisible = true
     },

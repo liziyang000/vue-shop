@@ -27,3 +27,6 @@ body,
 .el-scrollbar__wrap {
   overflow-x: hidden;
 }
+.ql-editor {
+  min-height: 300px;
+}

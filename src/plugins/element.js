@@ -6,12 +6,15 @@ import {
   Button,
   Card,
   Cascader,
+  Checkbox,
+  CheckboxGroup,
   Col,
   Container,
   Dialog,
   Form,
   FormItem,
   Header,
+  Image,
   Input,
   Main,
   Menu,
@@ -24,6 +27,8 @@ import {
   RadioButton,
   Row,
   Select,
+  Step,
+  Steps,
   Submenu,
   Switch,
   Table,
@@ -34,7 +39,8 @@ import {
   Timeline,
   TimelineItem,
   Tooltip,
-  Tree
+  Tree,
+  Upload
 } from 'element-ui'
 import Vue from 'vue'
 
@@ -70,6 +76,12 @@ Vue.use(Cascader)
 Vue.use(Alert)
 Vue.use(Tabs)
 Vue.use(TabPane)
+Vue.use(Step)
+Vue.use(Steps)
+Vue.use(Checkbox)
+Vue.use(CheckboxGroup)
+Vue.use(Upload)
+Vue.use(Image)
 
 Vue.use(Timeline)
 Vue.use(TimelineItem)

@@ -67,7 +67,6 @@ export default {
           return
         }
         const { data: res } = await this.$http.post('login', this.Loginform)
-        // console.log(res)
         if (res.meta.status !== 200) {
           return this.$message.error('登陆失败！')
         }

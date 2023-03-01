@@ -44,7 +44,6 @@
           </el-button>
         </el-col>
       </el-row>
-
       <!-- 动态参数表格  -->
       <el-table :data="attrList" border stripe>
         <el-table-column type="expand">
@@ -59,14 +58,16 @@
             </el-tag>
             <el-input
               class="input-new-tag"
-              v-if="inputVisible"
-              v-model="inputValue"
+              v-if="scope.row.inputVisible"
+              v-model="scope.row.inputValue"
               ref="saveTagInput"
               size="small"
               @keyup.enter.native="handleInputConfirm(scope.row)"
               @blur="handleInputConfirm(scope.row)"></el-input>
             <!-- 添加按钮 -->
-            <el-button v-else class="button-new-tag" size="small" @click="showInput">+ New Tag</el-button>
+            <el-button v-else class="button-new-tag" size="small" @click="showInput(scope.row)">
+              + New Tag
+            </el-button>
           </template>
         </el-table-column>
         <el-table-column type="index" label="#"></el-table-column>
@@ -180,8 +181,8 @@ export default {
         res.data.forEach(item => {
           item.attr_vals = item.attr_vals.length !== 0 ? item.attr_vals.split(',') : []
           // 控制文本框的显示与隐藏
-          item.inputVisible = false
-          item.inputValue = ''
+          this.$set(item, 'inputVisible', false)
+          this.$set(item, 'inputValue', '')
         })
       } else {
         this.attrList = []
@@ -189,6 +190,7 @@ export default {
     },
     // 添加对话框关闭
     addDialogClosed() {
+      // this.addForm = {}
       this.$refs.addFormRef.resetFields()
     },
     // 添加动态参数或静态属性
@@ -207,8 +209,8 @@ export default {
     },
     // 修改属性
     showEditDialog(attr) {
-      this.editDialogVisible = true
       this.editForm = attr
+      this.editDialogVisible = true
     },
     editParams() {
       this.$refs.editFormRef.validate(async valid => {
@@ -227,7 +229,7 @@ export default {
       })
     },
     editDialogClosed() {
-      this.$refs.editFormRef.resetFields()
+      this.editForm = {}
     },
     // 删除属性
     async delParams(attr) {
@@ -249,20 +251,18 @@ export default {
     // 删除标签
     async reMoveTag(attr, tag) {
       attr.attr_vals.splice(attr.attr_vals.indexOf(tag), 1)
-      console.log(attr.attr_vals.join(','))
       // 上传删除后的标签内容
       const { data: res } = await this.$http.put(`categories/${this.cateId}/attributes/${attr.attr_id}`, {
         attr_name: attr.attr_name,
         attr_sel: this.activeName,
         attr_vals: attr.attr_vals.join(',')
       })
-      console.log(res)
       if (res.meta.status !== 200) return this.$message.error('删除失败！')
       this.$message.success('修改成功！')
     },
     // 点击添加标签按钮
-    showInput() {
-      this.inputVisible = true
+    showInput(attr) {
+      attr.inputVisible = true
       this.$nextTick(_ => {
         this.$refs.saveTagInput.$refs.input.focus()
       })
@@ -270,7 +270,9 @@ export default {
 
     // 当按下enter或输入框失去焦点
     async handleInputConfirm(attr) {
-      const inputValue = this.inputValue.trim()
+      const inputValue = attr.inputValue.trim()
+      attr.inputVisible = false
+      attr.inputValue = ''
       if (inputValue.length !== 0) {
         attr.attr_vals.push(inputValue)
         const { data: res } = await this.$http.put(`categories/${this.cateId}/attributes/${attr.attr_id}`, {
@@ -281,8 +283,6 @@ export default {
         if (res.meta.status !== 200) return this.$message.error('删除失败！')
         this.$message.success('修改成功！')
       }
-      this.inputVisible = false
-      this.inputValue = ''
     }
   },
   computed: {

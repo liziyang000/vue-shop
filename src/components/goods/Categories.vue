@@ -255,7 +255,7 @@ export default {
     // 关闭修改对话框
     editCateDialogClosed() {
       this.$refs.editCateFormRef.resetFields()
-      this.editCateForm = {}
+      // this.editCateForm = {}
     },
     // 删除分类
     async reMoveCate(cate) {
