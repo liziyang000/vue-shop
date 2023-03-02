@@ -30,3 +30,8 @@ body,
 .ql-editor {
   min-height: 300px;
 }
+.el-pagination {
+  display: flex;
+  margin-top: 15px;
+  justify-content: center;
+}

@@ -360,10 +360,4 @@ export default {
 }
 </script>
 
-<style lang="less" scoped>
-.el-pagination {
-  display: flex;
-  margin-top: 15px;
-  justify-content: center;
-}
-</style>
+<style lang="less" scoped></style>

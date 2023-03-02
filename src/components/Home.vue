@@ -2,7 +2,7 @@
   <el-container class="home-container">
     <!-- 头部区域 -->
     <el-header>
-      <div>
+      <div @click="$router.push('home')" style="cursor: pointer">
         <img src="@/assets/logo.png" alt="" />
         <span>电商后台管理系统</span>
       </div>
